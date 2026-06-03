@@ -1,0 +1,222 @@
+/* Fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+:root {
+  --bg:          #0d0f14;
+  --surface:     #151820;
+  --surface2:    #1c2030;
+  --border:      #252a3a;
+  --accent:      #4f8ef7;
+  --accent-glow: rgba(79, 142, 247, 0.18);
+  --accent2:     #7c5cfc;
+  --text:        #e2e8f8;
+  --text-muted:  #636b85;
+  --success:     #34d399;
+  --mono:        'Space Mono', monospace;
+  --sans:        'DM Sans', sans-serif;
+  --radius:      10px;
+  --tab-h:       44px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 15px;
+  min-height: 100vh;
+  padding: 2rem 2.5rem 4rem;
+  /* subtle grid texture */
+  background-image:
+    linear-gradient(rgba(79,142,247,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79,142,247,.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+h1 {
+  font-family: var(--mono);
+  font-size: 1.05rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 1.6rem 0 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+h1::before { content: '//'; color: var(--accent2); }
+
+h2 {
+  font-family: var(--mono);
+  font-size: .78rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 1.8rem 0 .9rem;
+  padding-left: .2rem;
+  border-left: 2px solid var(--accent2);
+  padding-left: .7rem;
+}
+
+.nav-tabs {
+  border: none;
+  background: var(--surface);
+  border-radius: var(--radius) var(--radius) 0 0;
+  padding: .4rem .4rem 0;
+  display: flex;
+  gap: .25rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-tabs .nav-item { margin: 0; }
+
+.nav-tabs .nav-link {
+  font-family: var(--mono);
+  font-size: .72rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid transparent;
+  border-bottom: none;
+  border-radius: var(--radius) var(--radius) 0 0;
+  padding: .55rem 1.2rem;
+  height: var(--tab-h);
+  transition: color .2s, background .2s, border-color .2s;
+  position: relative;
+  top: 1px;
+}
+
+.nav-tabs .nav-link:hover {
+  color: var(--text);
+  background: var(--surface2);
+  border-color: var(--border);
+}
+
+.nav-tabs .nav-link.active {
+  color: var(--accent);
+  background: var(--bg);
+  border-color: var(--border);
+  border-bottom-color: var(--bg);
+}
+
+.nav-tabs .nav-link.active::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+.tab-content {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 var(--radius) var(--radius);
+  padding: 1.5rem 1.8rem 2rem;
+}
+
+.table {
+  width: 100%;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  font-size: .88rem;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 0 0 1px var(--border);
+  --bs-table-bg: transparent;
+  --bs-table-striped-bg: transparent;
+  --bs-table-hover-bg: transparent;
+  --bs-table-border-color: var(--border);
+  --bs-table-color: var(--text);
+}
+
+.table > thead > tr,
+.table thead tr {
+  background: var(--surface2) !important;
+}
+
+.table > thead > tr > th,
+.table thead th {
+  font-family: var(--mono);
+  font-size: .68rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--accent) !important;
+  font-weight: 700;
+  padding: .85rem 1rem;
+  border-bottom: 1px solid var(--border) !important;
+  border-color: var(--border) !important;
+  white-space: nowrap;
+  background: var(--surface2) !important;
+}
+
+.table > tbody > tr,
+.table tbody tr {
+  background: var(--surface) !important;
+  transition: background .15s;
+  --bs-table-accent-bg: transparent;
+}
+
+.table > tbody > tr:nth-child(even),
+.table tbody tr:nth-child(even) {
+  background: var(--surface2) !important;
+}
+
+.table > tbody > tr:hover,
+.table tbody tr:hover {
+  background: var(--accent-glow) !important;
+  --bs-table-accent-bg: transparent;
+}
+
+.table > tbody > tr > td,
+.table tbody td {
+  padding: .7rem 1rem;
+  border-bottom: 1px solid var(--border) !important;
+  border-color: var(--border) !important;
+  color: var(--text) !important;
+  font-variant-numeric: tabular-nums;
+  background: inherit !important;
+}
+
+.table > tbody > tr:last-child > td,
+.table tbody tr:last-child td {
+  border-bottom: none !important;
+}
+
+#estadisticasTabla td:first-child {
+  font-family: var(--mono);
+  font-size: .75rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  width: 55%;
+}
+
+#estadisticasTabla td:last-child {
+  font-family: var(--mono);
+  font-size: .95rem;
+  color: var(--success);
+  font-weight: 700;
+}
+
+#nivelesTabla td:last-child,
+#tablaCursos  td:last-child {
+  font-family: var(--mono);
+  color: var(--accent);
+  font-size: .82rem;
+}
+
+::-webkit-scrollbar              { width: 6px; height: 6px; }
+::-webkit-scrollbar-track        { background: var(--surface); }
+::-webkit-scrollbar-thumb        { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover  { background: var(--accent); }
+
+.tab-pane.show.active { animation: fadeUp .25s ease both; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
